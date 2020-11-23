@@ -83,7 +83,7 @@ Updater(){
 	Gui, Submit, NoHide
 }
 
-; Returns an array of the hotbar indexes of each active hotbar
+; Returns an array of the hotbar indexes of each active hotbar slot
 GetActiveSlots(){
 	activeSlots := Array()
 	Loop, 9{
@@ -112,7 +112,7 @@ GetPercent(currentID, activeSlots){
 	}
 }
 
-; Clicking Apply will save the current setting for the checkboxes and sliders, and hide the GUI
+; Clicking Apply will save the current setting for the checkboxes and sliders, generate the distribution mapping, and hide the GUI
 Apply:
 	Global finalActiveSlots, distributionMapping
 	if(finalActiveSlots.MinIndex() != ""){
@@ -137,6 +137,7 @@ Return
 
 
 ; Every time you right-click, this will place the block you are currently holding, then select the next hotbar slot
+; Ensures the Minecraft window is active, if not, it will replicate your default right-click behavior
 *RButton::
 	IfWinActive , Minecraft
 	{
@@ -147,7 +148,7 @@ Return
 		; The middle-click functionality is hit and miss. It works fine if you're going slow, but as soon as you start 
 		; spamming blocks, it breaks down. The sleep is necessary, otherwise the slot picking process below works faster
 		; than Minecraft can pick-block, and you end up selecting a new slot, then picking the block you just placed,
-		; leaving you with the same block you just placed
+		; leaving you with the same block you just placed. Use at your own discretion
 		/*
 		if(midClick){
 			Click, Middle
