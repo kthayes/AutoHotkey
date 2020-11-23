@@ -1,4 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn  ; Enable warnings to assist with detecting common errors.
 
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -7,7 +7,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 distributionMapping := Array()
 finalActiveSlots := Array()
  
- ; Create gui that shows the check boxes and sliders for the user to select their desired hotbar slot usage
+; Create gui that shows the check boxes and sliders for the user to select their desired hotbar slot usage
 Gui, Add, Text, x12 y9 w298 h80 , Select which hotbar slots to randomly pick blocks from. The sliders allow you to specify the weight (frequency) for each selected hotbar slot. The percent is the actual distribution for each active hotbar slot.`nNote: The 'X' terminates the script, 'Apply' saves the changes and minimizes the GUI. Use CTRL-ALT-B to pull it back up.
 yCoord := 100
 Loop 9{
